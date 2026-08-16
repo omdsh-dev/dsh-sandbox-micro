@@ -1,0 +1,40 @@
+# dsh bundle patch: switch the model-facing shell to a microsandbox microVM.
+#
+# The base layer gates the two shell executors and their tools by platform.
+# This patch chooses one coherent Linux-bash composition on every platform:
+# the microsandbox shell executor owns `ctx.shell`, the platform twin rows are
+# disabled, tool-bash is exposed everywhere, and tool-pwsh is disabled because
+# its PowerShell dialect cannot run in the Debian guest.
+#
+# The official `sandbox` row is disabled and a microsandbox-backed provider
+# row is inserted under a new id for direct `ctx.sandbox` consumers. The shell
+# row does NOT consume `ctx.sandbox`; it builds the msb argv itself so the
+# resolved workdir and trusted DSH_* environment travel into the guest.
+- id: sandbox
+  disabled: true
+
+- id: bash-sandbox
+  disabled: true
+
+- id: pwsh-sandbox
+  disabled: true
+
+- id: tool-bash
+  disabled: false
+
+- id: tool-pwsh
+  disabled: true
+
+- insert:
+    - id: sandbox-micro
+      name: '@deepseek-ai/dsh-sandbox-micro'
+      config:
+        image: debian
+        memory: 512M
+
+    - id: shell-micro
+      name: '@deepseek-ai/dsh-sandbox-micro/shell'
+      config:
+        image: debian
+        memory: 512M
+        timeoutMs: 120000
