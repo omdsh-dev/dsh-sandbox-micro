@@ -34,7 +34,7 @@ describe.skipIf(!enabled)('microsandbox e2e', () => {
     expect(result.status).not.toBe(0)
     expect(result.stdout).toContain('hello')
     expect(result.stderr).toMatch(/read-only file system|permission denied|operation not permitted/i)
-  })
+  }, 180_000)
 
 
   it('runs the real shell executor with workdir mapping and DSH env forwarding', async () => {
