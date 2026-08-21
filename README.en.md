@@ -10,7 +10,7 @@ A microsandbox plugin bundle for DeepSeek Harness: it replaces the model-facing 
 
 - **No `cmd.exe` or shell wrapping for untrusted argv.** The previous Windows implementation launched npm `.CMD` shims through `cmd /c`, which let the host shell parse `&`, quotes, and `%VAR%` in model commands. This plugin runs the Node shim shipped by the `microsandbox` dependency (`node .../bin/microsandbox.cjs`) and rejects `.CMD` / `.BAT` override paths.
 - **Fail-closed:** before the first confinement it probes `msb --version` and `msb doctor` (host virtualization prerequisites). The verdict is cached; failures throw `SANDBOX_UNAVAILABLE` — never an unconfined fallback.
-- **Execution-time runner failures are classified** with `runnerFailureRules` calibrated against real msb 0.6.9 stderr (image pull, mount path, sandbox start, and invalid-config errors).
+- **Execution-time runner failures are classified** with `runnerFailureRules` calibrated against real msb 0.6.12 stderr (image pull, mount path, sandbox start, and invalid-config errors).
 - Networking is disabled by default with `--no-net`; opt in with `allowNetwork: true`.
 
 ## Architecture
@@ -32,7 +32,7 @@ The package exposes two Cordis entrypoints:
 ## Prerequisites
 
 - Node `^22.19.0 || >=24.0.0`
-- `microsandbox` 0.6.9+ (installed as a dependency)
+- `microsandbox` 0.6.12+ (installed as a dependency)
 - Windows: Windows Hypervisor Platform; Linux/macOS: an msb-supported local backend
 - The image must contain the wrapped program; the default `debian` image has `bash` and coreutils
 

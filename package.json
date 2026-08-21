@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@deepseek-ai/schemastery": "^3.18.1",
-    "microsandbox": "^0.6.9"
+    "microsandbox": "^0.6.12"
   },
   "dsh": {
     "bundle": {
@@ -59,15 +59,15 @@
   ],
   "devDependencies": {
     "@deepseek-ai/cordis": "4.0.1",
-    "@deepseek-ai/dsh-bash-local": "0.1.0-rc.8",
-    "@deepseek-ai/dsh-invariants": "0.1.0-rc.8",
-    "@deepseek-ai/dsh-sandbox": "0.1.0-rc.8",
-    "@deepseek-ai/dsh-sandbox-policy": "0.1.0-rc.8",
-    "@deepseek-ai/dsh-shell": "0.1.0-rc.8",
+    "@deepseek-ai/dsh-bash-local": "^0.1.1-rc.1",
+    "@deepseek-ai/dsh-invariants": "^0.1.1-rc.1",
+    "@deepseek-ai/dsh-sandbox": "^0.1.1-rc.1",
+    "@deepseek-ai/dsh-sandbox-policy": "^0.1.1-rc.1",
+    "@deepseek-ai/dsh-shell": "^0.1.1-rc.1",
+    "@deepseek-ai/dsh-subprocess-local": "^0.1.1-rc.1",
     "@types/node": "^22.20.0",
     "typescript": "^7.0.2",
-    "vitest": "^4.1.10",
-    "@deepseek-ai/dsh-subprocess-local": "0.1.0-rc.8"
+    "vitest": "^4.1.10"
   },
   "repository": {
     "type": "git",
