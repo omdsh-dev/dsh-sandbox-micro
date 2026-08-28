@@ -10,7 +10,7 @@ DeepSeek Harness 的 microsandbox 插件 bundle：把模型可见的 `ctx.shell`
 
 - **不使用 `cmd.exe` 或其他 shell 包装不可信 argv**。Windows 上历史实现通过 `cmd /c` 启动 npm `.CMD` shim，会让模型命令中的 `&` / 引号 / `%VAR%` 被宿主机 shell 解析。本插件改为直接运行 `microsandbox` 依赖自带的 Node shim（`node .../bin/microsandbox.cjs`），并显式拒绝 `.CMD` / `.BAT` 覆盖路径。
 - **fail-closed**：首次 confinement 前会探测 `msb --version` 和 `msb doctor`（检查宿主虚拟化前置条件）；失败时缓存判决并抛出 `SANDBOX_UNAVAILABLE`，绝不退回未隔离执行。
-- **执行期 runner 失败可识别**：`runnerFailureRules` 按 msb 0.6.12 的真实 stderr 方言校准，覆盖镜像拉取、挂载路径、沙箱启动和无效配置错误。
+- **执行期 runner 失败可识别**：`runnerFailureRules` 按 msb 0.6.15 的真实 stderr 方言校准，覆盖镜像拉取、挂载路径、沙箱启动和无效配置错误。
 - 默认 `--no-net`；可通过 `allowNetwork: true` 显式放开。
 
 ## 架构
@@ -32,7 +32,7 @@ DeepSeek Harness 的 microsandbox 插件 bundle：把模型可见的 `ctx.shell`
 ## 前置条件
 
 - Node `^22.19.0 || >=24.0.0`
-- `microsandbox` 0.6.12+（已作为 dependency 随包安装）
+- `microsandbox` 0.6.15+（已作为 dependency 随包安装）
 - Windows：Windows Hypervisor Platform；Linux/macOS：msb 支持的本地后端
 - 镜像必须包含被包装的程序；默认 `debian` 包含 `bash` 与常用 coreutils
 

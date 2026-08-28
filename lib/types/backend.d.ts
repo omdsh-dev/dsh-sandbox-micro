@@ -18,7 +18,7 @@ import type { ConfinedArgv, RunnerFailureRule, SandboxPolicy } from '@deepseek-a
 export declare const DENIAL_SIGNATURES: readonly ['read-only file system', 'permission denied', 'operation not permitted'];
 /**
  * Fatal stderr substrings emitted by microsandbox itself when it fails before
- * the wrapped command runs. Calibrated against msb 0.6.12 output:
+ * the wrapped command runs. Calibrated against msb 0.6.15 output:
  *
  *   error: failed to start "<name>" / the host path for one of the mounts ...
  *   error: image error: registry error: ...
